@@ -12,7 +12,7 @@ void FillMatrixWithRandomNumbers(int arr[3][3] , short Rows , short Cols) {
 	{
 		for (short c = 0; c < Cols; c++)
 		{
-			arr[r][c] = RandomNamber(1, 100);
+			arr[r][c] = RandomNamber(1, 10);
 		}
 	}
 }
@@ -21,7 +21,10 @@ void PrintMatrix(int arr[3][3], short Rows, short Cols) {
 	{
 		for (short c = 0; c < Cols; c++)
 		{
-			cout << setw(3) << arr[r][c] << "   ";
+			//cout << setw(3) << arr[r][c] << "   ";
+			cout << setw(3);
+			printf(" %0*d  ", 2, arr[r][c]);
+			
 		}
 		cout << "\n";
 	}
@@ -116,6 +119,17 @@ void TransposedMatrix(int arrOrder[3][3], int arrTransposed[3][3], short Rows, s
 }
 
 
+//#8
+void MaltplyMatrixs(int arrMatrix1[3][3], int  arrMatrix2[3][3], int MatrixResults[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			MatrixResults[i][j] = arrMatrix1[i][j] * arrMatrix2[i][j];
+		}		
+	}
+}
+
 
 
 int main()
@@ -152,6 +166,7 @@ int main()
 	FillSumMatixColsInArry(arrCols, arr, 3, 3);
 	PrintColsSumArray(arrCols, 3);
 
+	cout << "\n=============================================================================\n";
 
 	// #6
 	int arrOrder[3][3];
@@ -164,6 +179,22 @@ int main()
 	cout << endl << "Transposed Array Of Matrix " << endl;
 	TransposedMatrix(arrOrder, arrTransposed, 3, 3);
 	PrintMatrix(arrTransposed, 3, 3);
+
+	cout << "\n=============================================================================\n";
+	//#8
+	int arrMatrix1[3][3], arrMatrix2[3][3] , MatrixResults[3][3];
+
+	FillMatrixWithRandomNumbers(arrMatrix1, 3, 3);
+	cout << endl << "Matrix 1 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix1, 3, 3);
+
+	FillMatrixWithRandomNumbers(arrMatrix2, 3, 3);
+	cout << endl << "Matrix 2 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix2, 3, 3);
+
+	MaltplyMatrixs(arrMatrix1, arrMatrix2, MatrixResults, 3, 3);
+	cout << endl << "Maltply Two Array Of Matrix " << endl;
+	PrintMatrix(MatrixResults, 3, 3);
 
 	system("pause>0");
 }
