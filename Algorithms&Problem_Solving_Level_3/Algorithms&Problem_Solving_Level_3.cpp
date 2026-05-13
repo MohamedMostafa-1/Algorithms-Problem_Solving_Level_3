@@ -28,14 +28,14 @@ void PrintMatrix(int arr[3][3], short Rows, short Cols) {
 }
 
 //#2
-int SumRow(int arr[3][3], int Row, int Cols) {
-	int Sum = 0;
-	for (short i = 0; i < Cols; i++)
+int SumRow(int arr[3][3], short RowNumber, short Cols) {
+	int sum = 0;
+	for (short j = 0; j < Cols; j++)
 	{
-		Sum += arr[Row][i];
+		sum += arr[RowNumber][j];
 	}
+	return sum;
 }
-
 void PrintEachSumRows(int arr[3][3], short Rows, short Cols) {
 	for (short r = 0; r <Rows ; r++)
 	{
@@ -44,6 +44,19 @@ void PrintEachSumRows(int arr[3][3], short Rows, short Cols) {
 		cout << endl;
 }
 
+//#3 
+void FillOneDimantionalFromTowDimantionl(int arr1[3], int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		arr1[i] = SumRow(arr, i, Cols);
+	}
+}
+void PrintOneDimantionalArray(int arr[3], int Length) {
+	for (short i = 0; i < Length; i++)
+	{
+		cout << setw(3) << arr[i] << "   ";
+	}
+}
 
 int main()
 {
@@ -60,6 +73,18 @@ int main()
 	// #2
 	cout << endl << "sum number for Each Rows";
 	PrintEachSumRows(arr, 3, 3);
+
+
+	// #3
+	int arr1[3];
+	cout << endl << endl;
+	FillOneDimantionalFromTowDimantionl(arr1, arr, 3, 3);
+	PrintOneDimantionalArray(arr1, 3);
+
+
+
+
+
 	system("pause>0");
 }
 
