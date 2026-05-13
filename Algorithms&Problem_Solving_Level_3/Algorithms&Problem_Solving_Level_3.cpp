@@ -27,6 +27,23 @@ void PrintMatrix(int arr[3][3], short Rows, short Cols) {
 	}
 }
 
+//#2
+int SumRow(int arr[3][3], int Row, int Cols) {
+	int Sum = 0;
+	for (short i = 0; i < Cols; i++)
+	{
+		Sum += arr[Row][i];
+	}
+}
+
+void PrintEachSumRows(int arr[3][3], short Rows, short Cols) {
+	for (short r = 0; r <Rows ; r++)
+	{
+		printf("\nSum Row %d = %d", r + 1, SumRow(arr, r, Cols));
+	}
+		cout << endl;
+}
+
 
 int main()
 {
@@ -39,6 +56,10 @@ int main()
 	FillMatrixWithRandomNumbers(arr ,3,3);
 	cout << "\n The following is a 3x3 random matrix:\n";
 	PrintMatrix(arr, 3, 3);
+
+	// #2
+	cout << endl << "sum number for Each Rows";
+	PrintEachSumRows(arr, 3, 3);
 	system("pause>0");
 }
 
