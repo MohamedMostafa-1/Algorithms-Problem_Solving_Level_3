@@ -104,6 +104,17 @@ void FillMatrixWithOrderedNumbers(int arrOrder[3][3], short Rows, short Cols) {
 }
 
 
+//#7
+void TransposedMatrix(int arrOrder[3][3], int arrTransposed[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Rows; j++)
+		{
+			arrTransposed[j][i] = arrOrder[i][j];
+		}	
+	}
+}
+
 
 
 
@@ -147,6 +158,12 @@ int main()
 	cout << endl << "Order Array Of Matrix " << endl;
 	FillMatrixWithOrderedNumbers(arrOrder, 3, 3);
 	PrintMatrix(arrOrder, 3, 3);
+
+	//#7
+	int arrTransposed[3][3];
+	cout << endl << "Transposed Array Of Matrix " << endl;
+	TransposedMatrix(arrOrder, arrTransposed, 3, 3);
+	PrintMatrix(arrTransposed, 3, 3);
 
 	system("pause>0");
 }
