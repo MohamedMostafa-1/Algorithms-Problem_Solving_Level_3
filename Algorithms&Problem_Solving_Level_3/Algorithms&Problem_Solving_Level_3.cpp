@@ -89,6 +89,24 @@ void PrintColsSumArray(int arr[3], int Length) {
 	}
 }
 
+
+// #6
+void FillMatrixWithOrderedNumbers(int arrOrder[3][3], short Rows, short Cols) {
+	short Counter = 0;
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			Counter++;
+			arrOrder[i][j] = Counter;
+		}
+	}
+}
+
+
+
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -122,6 +140,13 @@ int main()
 	int arrCols[3];
 	FillSumMatixColsInArry(arrCols, arr, 3, 3);
 	PrintColsSumArray(arrCols, 3);
+
+
+	// #6
+	int arrOrder[3][3];
+	cout << endl << "Order Array Of Matrix " << endl;
+	FillMatrixWithOrderedNumbers(arrOrder, 3, 3);
+	PrintMatrix(arrOrder, 3, 3);
 
 	system("pause>0");
 }
