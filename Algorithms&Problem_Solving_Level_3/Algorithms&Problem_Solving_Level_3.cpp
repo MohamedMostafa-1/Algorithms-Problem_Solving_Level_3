@@ -75,7 +75,19 @@ void PrintEachSumCols(int arr[3][3], short Rows, short Cols) {
 	}
 }
 
-
+//#5
+void FillSumMatixColsInArry(int arr2[3], int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Cols; i++)
+	{
+		arr2[i] = SumCol(arr, Rows, i);
+	}
+}
+void PrintColsSumArray(int arr[3], int Length) {
+	for (short i = 0; i < Length; i++)
+	{
+		cout << "sum col " << i+1<< " = " << arr[i] << endl;
+	}
+}
 
 int main()
 {
@@ -95,16 +107,21 @@ int main()
 
 
 	// #3
-	int arr1[3];
-	cout << endl << "Array" << endl;
-	FillSumMatixRowsInArry(arr1, arr, 3, 3);
-	PrintRowsSumArray(arr1, 3);
+	int arrRows[3];
+	cout << endl << "Array of sum rows" << endl;
+	FillSumMatixRowsInArry(arrRows, arr, 3, 3);
+	PrintRowsSumArray(arrRows, 3);
 
 
 	//#4 
 	cout << endl << "Sum Cols from mantrix array " << endl;
 	PrintEachSumCols(arr, 3, 3);
 
+	// #5
+	cout << endl << "Array of sum cols" << endl;
+	int arrCols[3];
+	FillSumMatixColsInArry(arrCols, arr, 3, 3);
+	PrintColsSumArray(arrCols, 3);
 
 	system("pause>0");
 }
