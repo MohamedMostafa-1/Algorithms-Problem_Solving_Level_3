@@ -134,23 +134,33 @@ void MaltplyMatrixs(int arrMatrix1[3][3], int  arrMatrix2[3][3],
 
 //#9
 void PrintMiddleRowMatrix(int Matrix1[3][3], short Rows, short Cols) {
-	short R = 0;
+	short MiddleRows = Rows / 2;
 
 		for (short j = 0; j <Cols; j++)
 		{
-			R = Rows / 2;
-			printf("%0*d  ", 2, Matrix1[R][j]);
+			printf("%0*d  ", 2, Matrix1[MiddleRows][j]);
 		}		
 }
 void PrintMiddleColMatrix(int Matrix1[3][3], short Rows, short Cols) {
-	short C = 0;
-		for (short j = 0; j < Cols; j++)
+	short MiddleCols = Cols / 2;
+		for (short j = 0; j < Rows; j++)
 		{
-			C = Cols / 2;
-			printf("%0*d  ", 2, Matrix1[j][C]);
+			printf("%0*d  ", 2, Matrix1[j][MiddleCols]);
 		}
 }
 
+//#10
+int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols) {
+	int sum = 0;
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			sum += Matrix1[i][j];
+		}
+	}
+	return sum;
+}
 
 int main()
 {
@@ -217,7 +227,6 @@ int main()
 	PrintMatrix(MatrixResults, 3, 3);
 
 	cout << "\n=============================================================================\n";
-
 	//#9
 	cout << endl << "Matrix 1  " << endl;
 	PrintMatrix(arrMatrix1, 3, 3);
@@ -228,6 +237,17 @@ int main()
 	PrintMiddleColMatrix(arrMatrix1, 3, 3);
 
 	
+	cout << "\n=============================================================================\n";
+	//#10
+	cout << endl << "Matrix 1  " << endl;
+	PrintMatrix(arrMatrix1, 3, 3);
+	cout << "\nSum of Matrix1 is: " << SumOfMatrix(arrMatrix1, 3, 3);
+
+
+
+
+
+
 	cout << "\n=============================================================================\n";
 
 
