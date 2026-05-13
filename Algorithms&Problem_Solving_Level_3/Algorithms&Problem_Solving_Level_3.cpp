@@ -120,7 +120,8 @@ void TransposedMatrix(int arrOrder[3][3], int arrTransposed[3][3], short Rows, s
 
 
 //#8
-void MaltplyMatrixs(int arrMatrix1[3][3], int  arrMatrix2[3][3], int MatrixResults[3][3], short Rows, short Cols) {
+void MaltplyMatrixs(int arrMatrix1[3][3], int  arrMatrix2[3][3], 
+	                int MatrixResults[3][3], short Rows, short Cols) {
 	for (short i = 0; i < Rows; i++)
 	{
 		for (short j = 0; j < Cols; j++)
@@ -130,6 +131,25 @@ void MaltplyMatrixs(int arrMatrix1[3][3], int  arrMatrix2[3][3], int MatrixResul
 	}
 }
 
+
+//#9
+void PrintMiddleRowMatrix(int Matrix1[3][3], short Rows, short Cols) {
+	short R = 0;
+
+		for (short j = 0; j <Cols; j++)
+		{
+			R = Rows / 2;
+			printf("%0*d  ", 2, Matrix1[R][j]);
+		}		
+}
+void PrintMiddleColMatrix(int Matrix1[3][3], short Rows, short Cols) {
+	short C = 0;
+		for (short j = 0; j < Cols; j++)
+		{
+			C = Cols / 2;
+			printf("%0*d  ", 2, Matrix1[j][C]);
+		}
+}
 
 
 int main()
@@ -195,6 +215,21 @@ int main()
 	MaltplyMatrixs(arrMatrix1, arrMatrix2, MatrixResults, 3, 3);
 	cout << endl << "Maltply Two Array Of Matrix " << endl;
 	PrintMatrix(MatrixResults, 3, 3);
+
+	cout << "\n=============================================================================\n";
+
+	//#9
+	cout << endl << "Matrix 1  " << endl;
+	PrintMatrix(arrMatrix1, 3, 3);
+
+	cout << endl << "Matrix 1 Middle Row " << endl;
+	PrintMiddleRowMatrix(arrMatrix1, 3, 3);
+	cout << endl << "Matrix 1 Middle Col " << endl;
+	PrintMiddleColMatrix(arrMatrix1, 3, 3);
+
+	
+	cout << "\n=============================================================================\n";
+
 
 	system("pause>0");
 }
