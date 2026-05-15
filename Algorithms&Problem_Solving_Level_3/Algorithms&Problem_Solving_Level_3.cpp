@@ -162,6 +162,13 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols) {
 	return sum;
 }
 
+
+
+//#11
+bool AreEqualMatrices(int Matrix1[3][3], int Matrix2[3][3] , short Rows, short Cols) {
+	return (SumOfMatrix(Matrix1, Rows, Cols) == SumOfMatrix(Matrix2, Rows, Cols));
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -246,9 +253,21 @@ int main()
 
 
 
-
-
+	// #11 To #20
+	
+	// #11
 	cout << "\n=============================================================================\n";
+	int SumMaterix1 = 0, SumMaterix2 = 0;
+	cout << endl << "Matrix 1 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix1, 3, 3);
+
+	cout << endl << "Matrix 2 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix2, 3, 3);
+
+	if(AreEqualMatrices(arrMatrix1, arrMatrix2, 3, 3))
+		cout << "\nYES: both martices are equal.";
+	else
+		cout << "\nNo: martices are NOT equal.";
 
 
 	system("pause>0");
