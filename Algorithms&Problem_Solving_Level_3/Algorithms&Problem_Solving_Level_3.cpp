@@ -165,8 +165,21 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols) {
 
 
 //#11
-bool AreEqualMatrices(int Matrix1[3][3], int Matrix2[3][3] , short Rows, short Cols) {
+bool AreEqualSumMatrices(int Matrix1[3][3], int Matrix2[3][3] , short Rows, short Cols) {
 	return (SumOfMatrix(Matrix1, Rows, Cols) == SumOfMatrix(Matrix2, Rows, Cols));
+}
+
+//#12
+bool AreTypicalMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix1[i][j] != Matrix2[i][j])
+				return false;
+		}
+	}
+	return true;
 }
 
 int main()
@@ -257,17 +270,30 @@ int main()
 	
 	// #11
 	cout << "\n=============================================================================\n";
-	int SumMaterix1 = 0, SumMaterix2 = 0;
 	cout << endl << "Matrix 1 Array Of Matrix " << endl;
 	PrintMatrix(arrMatrix1, 3, 3);
 
 	cout << endl << "Matrix 2 Array Of Matrix " << endl;
 	PrintMatrix(arrMatrix2, 3, 3);
 
-	if(AreEqualMatrices(arrMatrix1, arrMatrix2, 3, 3))
+	if(AreEqualSumMatrices(arrMatrix1, arrMatrix2, 3, 3))
 		cout << "\nYES: both martices are equal.";
 	else
 		cout << "\nNo: martices are NOT equal.";
+
+	cout << "\n=============================================================================\n";
+
+	//#12
+	cout << endl << "Matrix 1 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix1, 3, 3);
+
+	cout << endl << "Matrix 2 Array Of Matrix " << endl;
+	PrintMatrix(arrMatrix2, 3, 3);
+
+	if (AreTypicalMatrix(arrMatrix1, arrMatrix1, 3, 3))
+		cout << "\nyes,Both Matrix Are Typical " << endl;
+	else
+		cout << "\nNo ,Matrix Are Not Typical" << endl;
 
 
 	system("pause>0");
