@@ -182,6 +182,23 @@ bool AreTypicalMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Co
 	return true;
 }
 
+//#13
+bool IsMatrixIdentity(int Matrix[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Rows;j++)
+		{
+
+			if (i != j && Matrix[i][j] != 0)
+				return false;
+			else if (i == j && Matrix[i][j] != 1)
+			return false;
+
+		}
+	}
+	return true;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -290,11 +307,23 @@ int main()
 	cout << endl << "Matrix 2 Array Of Matrix " << endl;
 	PrintMatrix(arrMatrix2, 3, 3);
 
-	if (AreTypicalMatrix(arrMatrix1, arrMatrix1, 3, 3))
+	if (AreTypicalMatrix(arrMatrix1, arrMatrix2, 3, 3))
 		cout << "\nyes,Both Matrix Are Typical " << endl;
 	else
 		cout << "\nNo ,Matrix Are Not Typical" << endl;
 
+	cout << "\n=============================================================================\n";
+	
+	// #13
+	int Matrix[3][3] = { {1,0,0},{0,1,0},{0,0,1} };
+
+	cout << endl << "Array Of Matrix " << endl;
+	PrintMatrix(Matrix, 3, 3);
+
+	if (IsMatrixIdentity(Matrix, 3, 3))
+		cout << "\nYes, Matrix  Is Identity.";
+	else
+		cout << "\nNo , Matrix Is Not Identity.";
 
 	system("pause>0");
 }
