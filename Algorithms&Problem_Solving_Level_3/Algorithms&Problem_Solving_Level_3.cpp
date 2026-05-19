@@ -199,6 +199,24 @@ bool IsMatrixIdentity(int Matrix[3][3], short Rows, short Cols) {
 	return true;
 }
 
+//#14
+bool IsScaral(int Matrix[3][3], short Rows, short Cols) {
+
+	int FirstDiagElemement = Matrix[0][0];
+
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Rows; j++)
+		{
+			if (i == j && Matrix[i][j] != FirstDiagElemement)
+				return false;
+			else if (i != j && Matrix[i][j] != 0)
+				return false;
+		}
+	}
+	return true;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -315,7 +333,7 @@ int main()
 	cout << "\n=============================================================================\n";
 	
 	// #13
-	int Matrix[3][3] = { {1,0,0},{0,1,0},{0,0,1} };
+	int Matrix[3][3] = { {2,0,0},{0,1,0},{0,0,1} };
 
 	cout << endl << "Array Of Matrix " << endl;
 	PrintMatrix(Matrix, 3, 3);
@@ -324,6 +342,18 @@ int main()
 		cout << "\nYes, Matrix  Is Identity.";
 	else
 		cout << "\nNo , Matrix Is Not Identity.";
+
+	cout << "\n=============================================================================\n";
+
+	//#14
+	cout << endl << "Array Of Matrix " << endl;
+	PrintMatrix(Matrix, 3, 3);
+	if (IsScaral(Matrix, 3, 3))
+		cout << "\nMatrix is scaral\n";
+	else
+		cout << "\nMatrix is not scaral\n";
+
+
 
 	system("pause>0");
 }
