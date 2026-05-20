@@ -273,7 +273,33 @@ void PrintIntersectedNumbers(int Matrix1[3][3], int Matrix2[3][3], short Rows, s
 	cout << endl;
 }
 
+//#19
+int MaxNumberInMatrix(int Matrix[3][3], short Rows, short Cols) {
+	int Max = Matrix[0][0];
+		
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix[i][j] > Max)
+				Max = Matrix[i][j];
+		}
+	}
+	return Max;
+}
 
+int MinNumberInMatrix(int Matrix[3][3], short Rows, short Cols) {
+	int Min = Matrix[0][0];
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix[i][j] < Min)
+				Min = Matrix[i][j];
+		}
+	}
+	return Min;
+}
 
 int main()
 {
@@ -438,22 +464,22 @@ int main()
 
 
 	cout << "\n=============================================================================\n";
-	//#17
-	cout << "\nMatrix2:\n";
-	PrintMatrix(Matrix2, 3, 3);
-	int Number = ReadPostiveNumber();
+	////#17
+	//cout << "\nMatrix2:\n";
+	//PrintMatrix(Matrix2, 3, 3);
+	//int Number = ReadPostiveNumber();
 
-	//Using Count is a slower method , this iteration on all elemet even find number
-	if (CountNumberInMatrix(Matrix2, Number, 3, 3) > 0)
-		cout << "\nYes it is there.\n";
-	else
-		cout << "\nNo: It's NOT there.\n";
+	////Using Count is a slower method , this iteration on all elemet even find number
+	//if (CountNumberInMatrix(Matrix2, Number, 3, 3) > 0)
+	//	cout << "\nYes it is there.\n";
+	//else
+	//	cout << "\nNo: It's NOT there.\n";
 
-	//This is faster mthod
-	if (IsNumberInMatrix(Matrix2, Number, 3, 3))
-		cout << "\nYes it is there.\n";
-	else
-		cout << "\nNo: It's NOT there.\n";
+	////This is faster mthod
+	//if (IsNumberInMatrix(Matrix2, Number, 3, 3))
+	//	cout << "\nYes it is there.\n";
+	//else
+	//	cout << "\nNo: It's NOT there.\n";
 
 
 	cout << "\n=============================================================================\n";
@@ -468,6 +494,16 @@ int main()
 
 	cout << "\nIntersected Numbers are: \n\n";
 	PrintIntersectedNumbers(Matrix3, Matrix4, 3, 3);
+
+	//#19
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix3, 3, 3);
+
+	cout << "\nMinimum Number is: ";
+	cout << MinNumberInMatrix(Matrix3, 3, 3);
+	cout << "\n\nMax Number is: ";
+	cout << MaxNumberInMatrix(Matrix3, 3, 3);
+
 
 	system("pause>0");
 }
