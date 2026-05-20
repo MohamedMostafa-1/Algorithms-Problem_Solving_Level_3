@@ -257,6 +257,24 @@ bool IsNumberInMatrix(int Matrix[3][3],int Number, short Rows, short Cols) {
 	return false;
 }
 
+
+//#18
+void PrintIntersectedNumbers(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols) {
+	int Number=0;
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			Number = Matrix1[i][j];
+			if (IsNumberInMatrix(Matrix1, Number, Rows, Cols))
+				cout <<setw(3) << Number << "   ";
+		}
+	}
+	cout << endl;
+}
+
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -421,7 +439,6 @@ int main()
 
 	cout << "\n=============================================================================\n";
 	//#17
-
 	cout << "\nMatrix2:\n";
 	PrintMatrix(Matrix2, 3, 3);
 	int Number = ReadPostiveNumber();
@@ -438,6 +455,19 @@ int main()
 	else
 		cout << "\nNo: It's NOT there.\n";
 
+
+	cout << "\n=============================================================================\n";
+	//#18
+	int Matrix3[3][3] = { {77,5,12},{22,20,1},{1,0,9} };
+	int Matrix4[3][3] = { {5,80,90},{22,77,1},{10,8,33} };
+
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix3, 3, 3);
+	cout << "\nMatrix2:\n";
+	PrintMatrix(Matrix4, 3, 3);
+
+	cout << "\nIntersected Numbers are: \n\n";
+	PrintIntersectedNumbers(Matrix3, Matrix4, 3, 3);
 
 	system("pause>0");
 }
