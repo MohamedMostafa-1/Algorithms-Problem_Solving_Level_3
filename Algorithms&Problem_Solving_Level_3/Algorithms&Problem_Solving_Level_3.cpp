@@ -223,7 +223,7 @@ int ReadPostiveNumber() {
 	int Num = 0;
 	do
 	{
-		cout << "\nEnter the number to count in matrix ? ";
+		cout << "\nEnter the number ? ";
 		cin >> Num;
 	} while (Num <= 0);
 	return Num;
@@ -244,6 +244,18 @@ bool IsSparseMatrix(int Matrix[3][3], short Rows, short Cols) {
 	return (CountNumberInMatrix(Matrix, 0, Rows, Cols) > (MatrixSize / 2));
 }
 
+//#17
+bool IsNumberInMatrix(int Matrix[3][3],int Number, short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix[i][j] == Number)
+				return true;
+		}
+	}
+	return false;
+}
 
 int main()
 {
@@ -396,9 +408,9 @@ int main()
 
 	cout << "\n=============================================================================\n";
 	//#16
-	int Matrix2[3][3] = { {0,0,12},{9,0,0},{0,0,9} };
+	int Matrix2[3][3] = { {2,0,12},{9,0,0},{0,0,9} };
 
-	cout << "\nMatrix1:\n";
+	cout << "\nMatrix2:\n";
 	PrintMatrix(Matrix2, 3, 3);
 
 	if (IsSparseMatrix(Matrix2, 3, 3))
@@ -407,6 +419,24 @@ int main()
 		cout << "\nNo: It's NOT Sparse\n";
 
 
+	cout << "\n=============================================================================\n";
+	//#17
+
+	cout << "\nMatrix2:\n";
+	PrintMatrix(Matrix2, 3, 3);
+	int Number = ReadPostiveNumber();
+
+	//Using Count is a slower method , this iteration on all elemet even find number
+	if (CountNumberInMatrix(Matrix2, Number, 3, 3) > 0)
+		cout << "\nYes it is there.\n";
+	else
+		cout << "\nNo: It's NOT there.\n";
+
+	//This is faster mthod
+	if (IsNumberInMatrix(Matrix2, Number, 3, 3))
+		cout << "\nYes it is there.\n";
+	else
+		cout << "\nNo: It's NOT there.\n";
 
 
 	system("pause>0");
