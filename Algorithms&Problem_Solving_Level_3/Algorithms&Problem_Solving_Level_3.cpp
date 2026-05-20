@@ -217,6 +217,27 @@ bool IsScaral(int Matrix[3][3], short Rows, short Cols) {
 	return true;
 }
 
+
+//#15
+int ReadPostiveNumber() {
+	int Num = 0;
+	do
+	{
+		cout << "\nEnter the number to count in matrix ? ";
+		cin >> Num;
+	} while (Num <= 0);
+	return Num;
+}
+int CountNumberInMatrix(int Matrix[3][3], int Number, short Rows, short Cols) {
+	short counter = 0;
+	for (short i = 0; i < Rows; i++)
+		for (short j = 0; j < Rows; j++)
+			if (Matrix[i][j] == Number)
+				counter++;
+	return counter;
+}
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -333,7 +354,7 @@ int main()
 	cout << "\n=============================================================================\n";
 	
 	// #13
-	int Matrix[3][3] = { {2,0,0},{0,1,0},{0,0,1} };
+	int Matrix[3][3] = { {1,0,0},{0,1,0},{0,0,1} };
 
 	cout << endl << "Array Of Matrix " << endl;
 	PrintMatrix(Matrix, 3, 3);
@@ -353,6 +374,17 @@ int main()
 	else
 		cout << "\nMatrix is not scaral\n";
 
+
+	cout << "\n=============================================================================\n";
+	//#15
+	int Matrix1[3][3] = { {9,1,12},{0,9,1},{0,9,9} };
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+
+	int Number = ReadPostiveNumber();
+
+	cout << "\nNumber " << Number << " count in matrix is "
+		<< CountNumberInMatrix(Matrix1, Number, 3, 3) << endl;
 
 
 	system("pause>0");
