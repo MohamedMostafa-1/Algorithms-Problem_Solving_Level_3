@@ -186,7 +186,7 @@ bool AreTypicalMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Co
 bool IsMatrixIdentity(int Matrix[3][3], short Rows, short Cols) {
 	for (short i = 0; i < Rows; i++)
 	{
-		for (short j = 0; j < Rows;j++)
+		for (short j = 0; j < Cols;j++)
 		{
 
 			if (i != j && Matrix[i][j] != 0)
@@ -231,10 +231,17 @@ int ReadPostiveNumber() {
 int CountNumberInMatrix(int Matrix[3][3], int Number, short Rows, short Cols) {
 	short counter = 0;
 	for (short i = 0; i < Rows; i++)
-		for (short j = 0; j < Rows; j++)
+		for (short j = 0; j < Cols; j++)
 			if (Matrix[i][j] == Number)
 				counter++;
 	return counter;
+}
+
+
+//#16
+bool IsSparseMatrix(int Matrix[3][3], short Rows, short Cols) {
+	short MatrixSize = (Rows * Cols);
+	return (CountNumberInMatrix(Matrix, 0, Rows, Cols) > (MatrixSize / 2));
 }
 
 
@@ -376,15 +383,30 @@ int main()
 
 
 	cout << "\n=============================================================================\n";
-	//#15
-	int Matrix1[3][3] = { {9,1,12},{0,9,1},{0,9,9} };
+	////#15
+	//int Matrix1[3][3] = { {9,1,12},{0,9,1},{0,9,9} };
+	//cout << "\nMatrix1:\n";
+	//PrintMatrix(Matrix1, 3, 3);
+
+	//int Number = ReadPostiveNumber();
+
+	//cout << "\nNumber " << Number << " count in matrix is "
+	//	<< CountNumberInMatrix(Matrix1, Number, 3, 3) << endl;
+
+
+	cout << "\n=============================================================================\n";
+	//#16
+	int Matrix2[3][3] = { {0,0,12},{9,0,0},{0,0,9} };
+
 	cout << "\nMatrix1:\n";
-	PrintMatrix(Matrix1, 3, 3);
+	PrintMatrix(Matrix2, 3, 3);
 
-	int Number = ReadPostiveNumber();
+	if (IsSparseMatrix(Matrix2, 3, 3))
+		cout << "\nYes: It is Sparse\n";
+	else
+		cout << "\nNo: It's NOT Sparse\n";
 
-	cout << "\nNumber " << Number << " count in matrix is "
-		<< CountNumberInMatrix(Matrix1, Number, 3, 3) << endl;
+
 
 
 	system("pause>0");
