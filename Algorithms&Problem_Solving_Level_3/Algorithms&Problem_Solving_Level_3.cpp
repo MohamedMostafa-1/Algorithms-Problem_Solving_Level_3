@@ -315,10 +315,9 @@ bool IsPalindromeMatrix(int Matrix[3][3], short Rows, short Cols) {
 
 //#21
 void PrintFibonacciUsingLoop(short Number) {
-	int prev1 = 1, prev2 = 0;
+	int prev1 = 0, prev2 = 1;
 	int FibNumber = 0;
-	cout << "1  ";
-	for (short i = 2; i <= Number; i++)
+	for (short i = 0; i < Number; i++)
 	{
 		FibNumber = prev1 + prev2;
 		cout << FibNumber << "   ";
@@ -326,6 +325,22 @@ void PrintFibonacciUsingLoop(short Number) {
 		prev1 = FibNumber;
 	}
 }
+
+//#22
+void PrintFibonacciUsingRecurssion(short Number, int Prev1, int Prev2)
+{
+	int FibNumber = 0;
+	if (Number > 0)
+	{
+		FibNumber = Prev1 + Prev2;
+		cout << FibNumber << "   ";
+		Prev2 = Prev1;
+		Prev1 = FibNumber;
+		PrintFibonacciUsingRecurssion(Number - 1, Prev1, Prev2);
+	}
+}
+
+
 
 int main()
 {
@@ -547,6 +562,9 @@ int main()
 	//#21
 	PrintFibonacciUsingLoop(10);
 
+	cout << "\n=============================================================================\n";
+	//#22
+	PrintFibonacciUsingRecurssion(10 ,0,1);
 
 	system("pause>0");
 }
