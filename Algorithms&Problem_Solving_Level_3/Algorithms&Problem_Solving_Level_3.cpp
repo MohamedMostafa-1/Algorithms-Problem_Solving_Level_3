@@ -313,6 +313,20 @@ bool IsPalindromeMatrix(int Matrix[3][3], short Rows, short Cols) {
 	return true;
 }
 
+//#21
+void PrintFibonacciUsingLoop(short Number) {
+	int prev1 = 1, prev2 = 0;
+	int FibNumber = 0;
+	cout << "1  ";
+	for (short i = 2; i <= Number; i++)
+	{
+		FibNumber = prev1 + prev2;
+		cout << FibNumber << "   ";
+		prev2 = prev1;
+		prev1 = FibNumber;
+	}
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -527,6 +541,11 @@ int main()
 		cout << "\nYes: Matrix is Palindrome\n";
 	else
 		cout << "\nNo: Matrix is NOT Palindrome\n";
+
+
+	cout << "\n=============================================================================\n";
+	//#21
+	PrintFibonacciUsingLoop(10);
 
 
 	system("pause>0");
