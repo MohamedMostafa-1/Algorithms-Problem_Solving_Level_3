@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+
 using namespace std;
 
 int RandomNamber(int From, int To) {
@@ -420,6 +421,15 @@ char InvertLetterCase(char Ch1) {
 	return (isupper(Ch1) ? tolower(Ch1) : toupper(Ch1));
 }
 
+//#28
+string InvertAllLettersCase(string S1) {
+	for (short i = 0; i < S1.length(); i++)
+	{
+		S1[i] = InvertLetterCase(S1[i]);
+	}
+	return S1;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -665,21 +675,26 @@ int main()
 	//cout << S2 << endl;
 
 	cout << "\n=============================================================================\n";
-	//#26
-	string S3 = ReadString();
-	cout << "\nString After Conversoin toUpper: \n";
-	cout << UpperAllString(S3) << endl;
-	cout << "\nString After Conversoin toLower: \n";
-	cout << LowerAllString(S3) << endl;
+	////#26
+	//string S3 = ReadString();
+	//cout << "\nString After Conversoin toUpper: \n";
+	//cout << UpperAllString(S3) << endl;
+	//cout << "\nString After Conversoin toLower: \n";
+	//cout << LowerAllString(S3) << endl;
+
+	cout << "\n=============================================================================\n";
+	////#27
+	//char Ch1 = ReadChar();
+	//cout << "char after Invert \n";
+	//Ch1 = InvertLetterCase(Ch1);
+	//cout << Ch1 << endl;
 
 	cout << "\n=============================================================================\n";
 	//#27
-	char Ch1 = ReadChar();
-	cout << "char befor Invert \n";
-	cout << Ch1 << endl;
-	cout << "char after Invert \n";
-	Ch1 = InvertLetterCase(Ch1);
-	cout << Ch1 << endl;
+	string S4 = ReadString();
+	cout << "\nString after invert \n";
+	S4 = InvertAllLettersCase(S4);
+	cout << S4 << endl;
 
 	system("pause>0");
 }
