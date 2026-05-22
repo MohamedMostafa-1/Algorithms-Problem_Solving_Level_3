@@ -377,6 +377,21 @@ string UpperFirstLetterOfEachWord(string S1) {
 	return S1;
 }
 
+//#25
+string LowerFirstLetterOfEachWord(string S1)
+{
+	bool isFirstLetter = true;
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i] != ' ' && isFirstLetter)
+		{
+			S1[i] = tolower(S1[i]);
+		}
+		isFirstLetter = (S1[i] == ' ' ? true : false);
+	}
+	return S1;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -606,10 +621,18 @@ int main()
 	//PrintFirstLetterOfEachWord(ReadString());
 
 	cout << "\n=============================================================================\n";
-	string  S1 = ReadString();
+	////#24
+	//string  S1 = ReadString();
+	//cout << "\nString after conversion:\n";
+	//S1 = UpperFirstLetterOfEachWord(S1);
+	//cout << S1 << endl;
+
+	cout << "\n=============================================================================\n";
+	//#25
+	string S2 = ReadString();
 	cout << "\nString after conversion:\n";
-	S1 = UpperFirstLetterOfEachWord(S1);
-	cout << S1 << endl;
+	S2 = LowerFirstLetterOfEachWord(S2);
+	cout << S2 << endl;
 
 
 	system("pause>0");
