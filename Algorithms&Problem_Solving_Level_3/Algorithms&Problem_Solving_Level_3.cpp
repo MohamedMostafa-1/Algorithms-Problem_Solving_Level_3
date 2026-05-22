@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 using namespace std;
 
 int RandomNamber(int From, int To) {
@@ -341,6 +342,25 @@ void PrintFibonacciUsingRecurssion(short Number, int Prev1, int Prev2)
 }
 
 
+//#23
+string ReadString() {
+	string S1;
+	cout << "Please Enter Your String?\n";
+	getline(cin, S1);
+	return S1;
+}
+void PrintFirstLetterOfEachWord(string S1) {
+	bool IsFirstLetter = true;
+
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i] != ' ' && IsFirstLetter)
+			cout << S1[i] << endl;
+
+		IsFirstLetter = (S1[i] == ' ' ? true : false);
+	}
+
+}
 
 int main()
 {
@@ -565,6 +585,12 @@ int main()
 	cout << "\n=============================================================================\n";
 	//#22
 	PrintFibonacciUsingRecurssion(10 ,0,1);
+
+	cout << "\n=============================================================================\n";
+	//#23
+	PrintFirstLetterOfEachWord(ReadString());
+
+	cout << "\n=============================================================================\n";
 
 	system("pause>0");
 }
