@@ -430,6 +430,46 @@ string InvertAllLettersCase(string S1) {
 	return S1;
 }
 
+//#29
+enum enWhatToCout { SmallLetters = 0, CaptalLetters = 1, All = 3 };
+short CountLettres(string S1, enWhatToCout WhatToCount = enWhatToCout::All) {
+	short counter = 0;
+
+	if (WhatToCount == enWhatToCout::All)
+		return S1.length();
+
+
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if(WhatToCount == enWhatToCout::SmallLetters && islower(S1[i]))
+			counter++;
+
+		if (WhatToCount == enWhatToCout::CaptalLetters && isupper(S1[i]))
+			counter++;
+	}
+	return counter;
+}
+
+short SmallLetterCount(string S1) {
+	short cout = 0;
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (islower(S1[i]))
+			cout++;
+	}
+	return cout;
+}
+short CaptalLetterCount(string S1) {
+	short cout = 0;
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (isupper(S1[i]))
+			cout++;
+	}
+	return cout;
+}
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -690,11 +730,24 @@ int main()
 	//cout << Ch1 << endl;
 
 	cout << "\n=============================================================================\n";
-	//#27
-	string S4 = ReadString();
-	cout << "\nString after invert \n";
-	S4 = InvertAllLettersCase(S4);
-	cout << S4 << endl;
+	////#28
+	//string S4 = ReadString();
+	//cout << "\nString after invert \n";
+	//S4 = InvertAllLettersCase(S4);
+	//cout << S4 << endl;
+
+	cout << "\n=============================================================================\n";
+	//#29
+	string S5 = ReadString();
+
+	cout << "\nString Length : " << S5.length() << endl;
+	cout << "Small Letter Count : " << SmallLetterCount(S5) << endl;
+	cout << "Captal Letter Count : " << CaptalLetterCount(S5) << endl;
+
+	cout << "\n\nMethod 2\n";
+	cout << "\nString Length = " << CountLettres(S5);
+	cout << "\nCapital Letters Count= " << CountLettres(S5,enWhatToCout::CaptalLetters);
+	cout << "\nSmall Letters Count= " << CountLettres(S5, enWhatToCout::SmallLetters);
 
 	system("pause>0");
 }
