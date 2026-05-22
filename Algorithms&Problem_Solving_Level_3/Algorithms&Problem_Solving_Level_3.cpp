@@ -469,6 +469,16 @@ short CaptalLetterCount(string S1) {
 	return cout;
 }
 
+//#30
+short FindcountLetter(string S1, char Letter) {
+	short count = 0;
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i] == Letter)
+			count++;
+	}
+	return count;
+}
 
 int main()
 {
@@ -737,17 +747,25 @@ int main()
 	//cout << S4 << endl;
 
 	cout << "\n=============================================================================\n";
-	//#29
-	string S5 = ReadString();
+	////#29
+	//string S5 = ReadString();
 
-	cout << "\nString Length : " << S5.length() << endl;
-	cout << "Small Letter Count : " << SmallLetterCount(S5) << endl;
-	cout << "Captal Letter Count : " << CaptalLetterCount(S5) << endl;
+	//cout << "\nString Length : " << S5.length() << endl;
+	//cout << "Small Letter Count : " << SmallLetterCount(S5) << endl;
+	//cout << "Captal Letter Count : " << CaptalLetterCount(S5) << endl;
 
-	cout << "\n\nMethod 2\n";
-	cout << "\nString Length = " << CountLettres(S5);
-	cout << "\nCapital Letters Count= " << CountLettres(S5,enWhatToCout::CaptalLetters);
-	cout << "\nSmall Letters Count= " << CountLettres(S5, enWhatToCout::SmallLetters);
+	//cout << "\n\nMethod 2\n";
+	//cout << "\nString Length = " << CountLettres(S5);
+	//cout << "\nCapital Letters Count= " << CountLettres(S5,enWhatToCout::CaptalLetters);
+	//cout << "\nSmall Letters Count= " << CountLettres(S5, enWhatToCout::SmallLetters);
+
+	cout << "\n=============================================================================\n";
+	//#30
+	string S6 = ReadString();
+	char Ch2 = ReadChar();
+	cout << "\n Letter \'" << Ch2 << "\' count= " << FindcountLetter(S6, Ch2) << endl;
+
+
 
 	system("pause>0");
 }
