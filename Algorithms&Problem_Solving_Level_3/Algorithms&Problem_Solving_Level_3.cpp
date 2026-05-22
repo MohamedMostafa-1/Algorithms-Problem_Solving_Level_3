@@ -409,6 +409,17 @@ string LowerAllString(string S1) {
 }
 
 
+//#27
+char ReadChar() {
+	char Ch1;
+	cout << "Please Enter a Character?\n";
+	cin >> Ch1;
+	return Ch1;
+}
+char InvertLetterCase(char Ch1) {
+	return (isupper(Ch1) ? tolower(Ch1) : toupper(Ch1));
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -625,6 +636,8 @@ int main()
 		cout << "\nNo: Matrix is NOT Palindrome\n";
 
 
+
+	// #21 To #30
 	cout << "\n=============================================================================\n";
 	//#21
 	PrintFibonacciUsingLoop(10);
@@ -658,6 +671,15 @@ int main()
 	cout << UpperAllString(S3) << endl;
 	cout << "\nString After Conversoin toLower: \n";
 	cout << LowerAllString(S3) << endl;
+
+	cout << "\n=============================================================================\n";
+	//#27
+	char Ch1 = ReadChar();
+	cout << "char befor Invert \n";
+	cout << Ch1 << endl;
+	cout << "char after Invert \n";
+	Ch1 = InvertLetterCase(Ch1);
+	cout << Ch1 << endl;
 
 	system("pause>0");
 }
