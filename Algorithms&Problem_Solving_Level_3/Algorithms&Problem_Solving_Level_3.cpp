@@ -392,6 +392,23 @@ string LowerFirstLetterOfEachWord(string S1)
 	return S1;
 }
 
+//#26
+string UpperAllString(string S1) {
+	for (short  i = 0; i < S1.length(); i++)
+	{
+		S1[i] = toupper(S1[i]);
+	}
+	return S1;
+}
+string LowerAllString(string S1) {
+	for (short  i = 0; i < S1.length(); i++)
+	{
+		S1[i] = tolower(S1[i]);
+	}
+	return S1;
+}
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -628,12 +645,19 @@ int main()
 	//cout << S1 << endl;
 
 	cout << "\n=============================================================================\n";
-	//#25
-	string S2 = ReadString();
-	cout << "\nString after conversion:\n";
-	S2 = LowerFirstLetterOfEachWord(S2);
-	cout << S2 << endl;
+	////#25
+	//string S2 = ReadString();
+	//cout << "\nString after conversion:\n";
+	//S2 = LowerFirstLetterOfEachWord(S2);
+	//cout << S2 << endl;
 
+	cout << "\n=============================================================================\n";
+	//#26
+	string S3 = ReadString();
+	cout << "\nString After Conversoin toUpper: \n";
+	cout << UpperAllString(S3) << endl;
+	cout << "\nString After Conversoin toLower: \n";
+	cout << LowerAllString(S3) << endl;
 
 	system("pause>0");
 }
