@@ -470,15 +470,26 @@ short CaptalLetterCount(string S1) {
 }
 
 //#30
-short FindcountLetter(string S1, char Letter) {
+short FindcountLetter(string S1, char Letter , bool MatchCase = true) {
 	short count = 0;
 	for (short i = 0; i < S1.length(); i++)
 	{
-		if (S1[i] == Letter)
-			count++;
+		if (MatchCase)
+		{
+			if (S1[i] == Letter)
+				count++;
+		}
+		else
+		{
+			if (tolower(S1[i]) == tolower(Letter))
+				count++;
+		}
 	}
 	return count;
 }
+
+//#31
+
 
 int main()
 {
@@ -764,7 +775,14 @@ int main()
 	string S6 = ReadString();
 	char Ch2 = ReadChar();
 	cout << "\n Letter \'" << Ch2 << "\' count= " << FindcountLetter(S6, Ch2) << endl;
+	//#31
+	cout << "\nLetter \'" << Ch2 << "\' ";
+	cout << "Or \'" << InvertLetterCase(Ch2) << "\' ";
+	cout << " Count = " << FindcountLetter(S6, Ch2, false);
 
+
+	// #31 to #40
+	cout << "\n=============================================================================\n";
 
 
 	system("pause>0");
