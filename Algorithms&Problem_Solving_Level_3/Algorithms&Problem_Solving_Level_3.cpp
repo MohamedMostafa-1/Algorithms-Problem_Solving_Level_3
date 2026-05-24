@@ -503,6 +503,17 @@ bool IsVowels_Perfect(char Ch1) {
 	return ((Ch1 == 'a') || (Ch1 == 'e') || (Ch1 == 'i') || (Ch1 == 'u') || (Ch1 == 'o'));
 }
 
+//#33
+short CountVowels(string Str) {
+	short count = 0;
+	for (short  i = 0; i < Str.length(); i++)
+	{
+		if (IsVowels_Perfect(Str[i]))
+			count++;
+	}
+	return count;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -796,20 +807,25 @@ int main()
 	// #31 to #40
 	cout << "\n=============================================================================\n";
 
-	//#32
-	char Ch3 = ReadChar();
-	if(IsVowels(Ch3))
-		cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
-	else
-		cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
+	////#32
+	//char Ch3 = ReadChar();
+	//if(IsVowels(Ch3))
+	//	cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
+	//else
+	//	cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
 
-	cout << "\nThe Perfcet Way\n";
+	//cout << "\nThe Perfcet Way\n";
 
-	if(IsVowels_Perfect(Ch3))
-		cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
-	else
-		cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
+	//if(IsVowels_Perfect(Ch3))
+	//	cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
+	//else
+	//	cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
 
+
+	cout << "\n=============================================================================\n";
+	//#33
+	string Str = ReadString();
+	cout << "\nNumber of vowels is: " << CountVowels(Str);
 	system("pause>0");
 }
 
