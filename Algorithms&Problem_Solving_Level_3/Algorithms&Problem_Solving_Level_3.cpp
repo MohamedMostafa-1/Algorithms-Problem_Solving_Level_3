@@ -469,24 +469,24 @@ short CaptalLetterCount(string S1) {
 	return cout;
 }
 
-//#30
-short FindcountLetter(string S1, char Letter , bool MatchCase = true) {
+//#30 & #31
+short FindcountLetter(string S1, char Ch1, bool MatchCase = true) {
 	short count = 0;
 	for (short i = 0; i < S1.length(); i++)
 	{
-		if (MatchCase)
-		{
-			if (S1[i] == Letter)
+		if (MatchCase) {
+			if (S1[i] == Ch1)
 				count++;
 		}
 		else
 		{
-			if (tolower(S1[i]) == tolower(Letter))
+			if (tolower(S1[i]) == tolower(Ch1))
 				count++;
 		}
 	}
 	return count;
 }
+
 
 //#31
 
