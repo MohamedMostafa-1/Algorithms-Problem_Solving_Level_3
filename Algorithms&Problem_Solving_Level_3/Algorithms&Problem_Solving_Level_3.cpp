@@ -488,8 +488,20 @@ short FindcountLetter(string S1, char Ch1, bool MatchCase = true) {
 }
 
 
-//#31
-
+//#32
+bool IsVowels(char Ch1) {
+	string VowalCh = "aeiou";
+	for (short i = 0; i < VowalCh.length(); i++)
+	{
+		if (VowalCh[i] == tolower(Ch1))
+			return true;
+	}
+	return false;
+}
+bool IsVowels_Perfect(char Ch1) {
+	Ch1 = tolower(Ch1);
+	return ((Ch1 == 'a') || (Ch1 == 'e') || (Ch1 == 'i') || (Ch1 == 'u') || (Ch1 == 'o'));
+}
 
 int main()
 {
@@ -771,19 +783,32 @@ int main()
 	//cout << "\nSmall Letters Count= " << CountLettres(S5, enWhatToCout::SmallLetters);
 
 	cout << "\n=============================================================================\n";
-	//#30
-	string S6 = ReadString();
-	char Ch2 = ReadChar();
-	cout << "\n Letter \'" << Ch2 << "\' count= " << FindcountLetter(S6, Ch2) << endl;
-	//#31
-	cout << "\nLetter \'" << Ch2 << "\' ";
-	cout << "Or \'" << InvertLetterCase(Ch2) << "\' ";
-	cout << " Count = " << FindcountLetter(S6, Ch2, false);
+	////#30
+	//string S6 = ReadString();
+	//char Ch2 = ReadChar();
+	//cout << "\n Letter \'" << Ch2 << "\' count= " << FindcountLetter(S6, Ch2) << endl;
+	////#31
+	//cout << "\nLetter \'" << Ch2 << "\' ";
+	//cout << "Or \'" << InvertLetterCase(Ch2) << "\' ";
+	//cout << " Count = " << FindcountLetter(S6, Ch2, false);
 
 
 	// #31 to #40
 	cout << "\n=============================================================================\n";
 
+	//#32
+	char Ch3 = ReadChar();
+	if(IsVowels(Ch3))
+		cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
+	else
+		cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
+
+	cout << "\nThe Perfcet Way\n";
+
+	if(IsVowels_Perfect(Ch3))
+		cout << "\nYES Letter \'" << Ch3 << "\' is vowel";
+	else
+		cout << "\nNO Letter \'" << Ch3 << "\' is NOT vowel";
 
 	system("pause>0");
 }
