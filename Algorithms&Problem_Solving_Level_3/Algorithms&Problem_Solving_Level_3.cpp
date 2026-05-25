@@ -525,6 +525,39 @@ void PrintVowels(string Str) {
 	cout << endl;
 }
 
+
+//#35
+void PrintEachWordInString(string Str) {
+	cout << "\nYour string wrords are: \n\n";
+	for (short i = 0; i < Str.length(); i++)
+	{
+		if (Str[i] != ' ')
+			cout << Str[i];
+		else
+			cout << endl;
+		
+	}
+}
+void PrintEachWordInString_Perfect(string Str) {
+
+	string sword;
+	string delim = " ";
+	int pos = 0;
+	cout << "\nyour string wrords are: \n\n";
+	while ((pos = Str.find(delim)) != std::string::npos) {
+		sword = Str.substr(0, pos);
+		if (sword != "")
+			cout << sword << endl;
+
+		Str.erase(0, pos + delim.length());
+	}
+
+	if (Str != "")
+		cout << Str << endl;
+
+}
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -842,6 +875,12 @@ int main()
 	cout << "\n=============================================================================\n";
 	//#34
 	PrintVowels(Str);
+
+	cout << "\n=============================================================================\n";
+	//#35
+	PrintEachWordInString(Str);
+	PrintEachWordInString_Perfect(Str);
+
 
 
 
