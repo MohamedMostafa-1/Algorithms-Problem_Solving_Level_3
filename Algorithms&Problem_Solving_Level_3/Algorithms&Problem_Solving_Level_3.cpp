@@ -514,6 +514,17 @@ short CountVowels(string Str) {
 	return count;
 }
 
+//#34
+void PrintVowels(string Str) {
+		cout << "\nVowels in string are: ";
+	for (short i = 0; i < Str.length(); i++)
+	{
+		if (IsVowels_Perfect(Str[i]))
+			cout << Str[i] << "    ";
+	}
+	cout << endl;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -825,7 +836,15 @@ int main()
 	cout << "\n=============================================================================\n";
 	//#33
 	string Str = ReadString();
-	cout << "\nNumber of vowels is: " << CountVowels(Str);
+	cout << "\nNumber of vowels is: " << CountVowels(Str) << endl;
+
+
+	cout << "\n=============================================================================\n";
+	//#34
+	PrintVowels(Str);
+
+
+
 	system("pause>0");
 }
 
