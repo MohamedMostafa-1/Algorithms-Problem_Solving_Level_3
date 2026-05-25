@@ -542,7 +542,7 @@ void PrintEachWordInString_Perfect(string Str) {
 
 	string sword;
 	string delim = " ";
-	int pos = 0;
+	short pos = 0;
 	cout << "\nyour string wrords are: \n\n";
 	while ((pos = Str.find(delim)) != std::string::npos) {
 		sword = Str.substr(0, pos);
@@ -557,6 +557,27 @@ void PrintEachWordInString_Perfect(string Str) {
 
 }
 
+//#36 
+short CountWords(string Str) {
+	string delim = " ";
+	short pos = 0;
+	short count = 0;
+	string sWord;
+	
+	while ((pos = Str.find(delim)) != std::string::npos) {
+		sWord = Str.substr(0, pos);
+		if (sWord != "")
+		{
+		  count++;
+		}
+		Str.erase(0, pos+ delim.length());
+	}
+	if (Str != "")
+		count++;
+
+	return count;
+
+}
 
 int main()
 {
@@ -881,6 +902,10 @@ int main()
 	PrintEachWordInString(Str);
 	PrintEachWordInString_Perfect(Str);
 
+	cout << "\n=============================================================================\n";
+	//#36
+	cout << "\nThe number of words in your string is: ";
+	cout << CountWords(Str) << endl;
 
 
 
