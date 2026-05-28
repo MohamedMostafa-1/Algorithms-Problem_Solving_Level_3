@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -579,6 +580,28 @@ short CountWords(string Str) {
 
 }
 
+//#37
+vector <string> SplitString(string Str, string Delim) {
+
+	vector <string> vString;
+	int pos = 0;
+	string sWord;
+
+	while ((pos = Str.find(Delim)) != std::string::npos) {
+		sWord = Str.substr(0, pos);
+
+		if (sWord != "")
+			vString.push_back(sWord);
+
+		Str.erase(0, pos + Delim.length());
+	}
+
+	if (Str != "")
+		vString.push_back(Str);
+
+	return vString;
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -888,26 +911,34 @@ int main()
 
 
 	cout << "\n=============================================================================\n";
-	//#33
-	string Str = ReadString();
-	cout << "\nNumber of vowels is: " << CountVowels(Str) << endl;
+	////#33
+	//string Str = ReadString();
+	//cout << "\nNumber of vowels is: " << CountVowels(Str) << endl;
 
 
 	cout << "\n=============================================================================\n";
-	//#34
-	PrintVowels(Str);
+	////#34
+	//PrintVowels(Str);
 
 	cout << "\n=============================================================================\n";
-	//#35
-	PrintEachWordInString(Str);
-	PrintEachWordInString_Perfect(Str);
+	////#35
+	//PrintEachWordInString(Str);
+	//PrintEachWordInString_Perfect(Str);
 
 	cout << "\n=============================================================================\n";
-	//#36
-	cout << "\nThe number of words in your string is: ";
-	cout << CountWords(Str) << endl;
+	////#36
+	//cout << "\nThe number of words in your string is: ";
+	//cout << CountWords(Str) << endl;
 
+	cout << "\n=============================================================================\n";
+	//#37
+	vector<string> vString;
+	vString = SplitString(ReadString(), " ");
 
+	cout << "\nTokens = " << vString.size() << endl;
+
+	for (string& s : vString)
+		cout << s << endl;
 
 	system("pause>0");
 }
