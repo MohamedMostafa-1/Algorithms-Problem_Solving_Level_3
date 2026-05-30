@@ -628,9 +628,20 @@ string Trim(string Str) {
 
 //#39
 string JoinString(vector <string> vString , string Delim) {
-	string Str;
+	string Str = "";
 	for (string& S : vString)
 		Str += S + Delim;
+
+	return Str.substr(0, Str.length() - Delim.length());
+}
+//#40
+string JoinString(string arrStr[] , short Length , string Delim) {
+	string Str = "";
+	for (short i = 0; i < Length; i++)
+	{
+		Str += arrStr[i] + Delim;
+	}
+		
 
 	return Str.substr(0, Str.length() - Delim.length());
 }
@@ -987,6 +998,12 @@ int main()
 
 	cout << "\nVector after join: \n";
 	cout << JoinString(vString, "@");
+
+	//#40 and revsion on Overloading concopt 
+	string arrString[] = { "Mohammed","Faid","Ali","Maher" };
+
+	cout << "\n\nArray after join: \n";
+	cout << JoinString(arrString, 4, "_");
 
 	system("pause>0");
 }
