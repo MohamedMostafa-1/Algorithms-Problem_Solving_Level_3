@@ -625,6 +625,15 @@ string Trim(string Str) {
 	return (TrimLeft(TrimRight(Str)));
 }
 
+
+//#39
+string JoinString(vector <string> vString , string Delim) {
+	string Str;
+	for (string& S : vString)
+		Str += S + Delim;
+
+	return Str.substr(0, Str.length() - Delim.length());
+}
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -965,12 +974,20 @@ int main()
 
 
 	cout << "\n=============================================================================\n";
-	//#37
+	//#38
 	string S1 = " Mohammed Abu-Hahdoud ";
 	cout << "\nString      = " << S1;
 	cout << "\n\nTrim Left = " << TrimLeft(S1);
 	cout << "\nTrim Right  = " << TrimRight(S1);
 	cout << "\nTrim        = " << Trim(S1);
+
+	cout << "\n=============================================================================\n";
+	//#39
+	vector<string> vString = { "Mohammed","Faid","Ali","Maher" };
+
+	cout << "\nVector after join: \n";
+	cout << JoinString(vString, "@");
+
 	system("pause>0");
 }
 
