@@ -645,6 +645,23 @@ string JoinString(string arrStr[] , short Length , string Delim) {
 
 	return Str.substr(0, Str.length() - Delim.length());
 }
+
+//#41
+string ReverseWordsInString(string Str) {
+	string sWord = "";
+
+	vector <string> vString = SplitString(Str, " ");
+	vector <string>::iterator iter = vString.end();
+
+	while (iter != vString.begin()) {
+		--iter;
+		sWord += *iter + " ";
+	}
+
+	sWord = sWord.substr(0, sWord.length() - 1);
+
+	return sWord;
+}
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -1005,6 +1022,11 @@ int main()
 	cout << "\n\nArray after join: \n";
 	cout << JoinString(arrString, 4, "_");
 
+	cout << "\n=============================================================================\n";
+	//#41
+	string S8 = ReadString();
+	cout << "\n\nString after reversing words:";
+	cout << "\n" << ReverseWordsInString(S8);
 	system("pause>0");
 }
 
