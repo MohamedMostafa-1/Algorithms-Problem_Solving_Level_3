@@ -586,7 +586,8 @@ vector <string> SplitString(string Str, string Delim) {
 	vector <string> vString;
 	int pos = 0;
 	string sWord;
-
+	
+	// use find() function to get the position of the delimiters
 	while ((pos = Str.find(Delim)) != std::string::npos) {
 		sWord = Str.substr(0, pos);
 
@@ -600,6 +601,28 @@ vector <string> SplitString(string Str, string Delim) {
 		vString.push_back(Str);
 
 	return vString;
+}
+
+
+//#38
+string TrimLeft(string Str) {
+	for (short i = 0; i < Str.length(); i++)
+	{
+		if (Str[i] != ' ')
+			return (Str.substr(i , Str.length() - 1));
+	}
+	return "";
+}
+string TrimRight(string Str) {
+	for (short i = Str.length() - 1; i >= 0; i--)
+	{
+		if (Str[i] != ' ')
+			return (Str.substr(0 , i+1));
+	}
+	return "";
+}
+string Trim(string Str) {
+	return (TrimLeft(TrimRight(Str)));
 }
 
 int main()
@@ -931,15 +954,23 @@ int main()
 	//cout << CountWords(Str) << endl;
 
 	cout << "\n=============================================================================\n";
+	////#37
+	//vector<string> vString;
+	//vString = SplitString(ReadString(), " ");
+
+	//cout << "\nTokens = " << vString.size() << endl;
+
+	//for (string& s : vString)
+	//	cout << s << endl;
+
+
+	cout << "\n=============================================================================\n";
 	//#37
-	vector<string> vString;
-	vString = SplitString(ReadString(), " ");
-
-	cout << "\nTokens = " << vString.size() << endl;
-
-	for (string& s : vString)
-		cout << s << endl;
-
+	string S1 = " Mohammed Abu-Hahdoud ";
+	cout << "\nString      = " << S1;
+	cout << "\n\nTrim Left = " << TrimLeft(S1);
+	cout << "\nTrim Right  = " << TrimRight(S1);
+	cout << "\nTrim        = " << Trim(S1);
 	system("pause>0");
 }
 
