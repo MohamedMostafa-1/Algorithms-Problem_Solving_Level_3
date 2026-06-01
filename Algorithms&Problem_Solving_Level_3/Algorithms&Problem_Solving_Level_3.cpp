@@ -662,6 +662,36 @@ string ReverseWordsInString(string Str) {
 
 	return sWord;
 }
+
+//#42
+string ReplaceWordInString(string Str, string StringToReplace, string ReplaceTo) {
+	vector <string>vString = SplitString(Str, " ");
+	vector <string>::iterator iter= vString.begin();
+	string sWord = "";
+	for (iter = vString.begin(); iter < vString.end();iter ++)
+	{
+		if ((*iter)== StringToReplace)
+		{
+			*iter = ReplaceTo;
+		}
+		sWord += *iter+ " ";
+	}
+	return sWord.substr(0, sWord.length() - 1);
+
+}
+
+string ReplaceWordInStringUsingBuiltInFunction(string Str, string StringToReplace, string sReplaceTo) {
+	short pos = Str.find(StringToReplace);
+
+	while (pos != std::string::npos) {
+		Str = Str.replace(pos, StringToReplace.length(), sReplaceTo);
+		pos = Str.find(StringToReplace);
+	}
+
+	return Str;	
+}
+
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -1023,10 +1053,25 @@ int main()
 	cout << JoinString(arrString, 4, "_");
 
 	cout << "\n=============================================================================\n";
-	//#41
-	string S8 = ReadString();
-	cout << "\n\nString after reversing words:";
-	cout << "\n" << ReverseWordsInString(S8);
+	////#41
+	//string S8 = ReadString();
+	//cout << "\n\nString after reversing words:";
+	//cout << "\n" << ReverseWordsInString(S8);
+
+
+	cout << "\n=============================================================================\n";
+	//#42
+	string S9 = "Welcome to Jordan , Jordan is a nice country";
+	string StringToReplace = "Jordan";
+	string ReplaceTo = "USA";
+	
+	cout << "\nOrigial String\n" << S9;
+	cout << "\n\nString After Replace:\n";
+	cout << ReplaceWordInString(S9, StringToReplace, ReplaceTo);
+	cout << "\n\nString After Replace Using Built In Function:\n";
+	cout << ReplaceWordInStringUsingBuiltInFunction(S9, StringToReplace, ReplaceTo);
+
+
 	system("pause>0");
 }
 
