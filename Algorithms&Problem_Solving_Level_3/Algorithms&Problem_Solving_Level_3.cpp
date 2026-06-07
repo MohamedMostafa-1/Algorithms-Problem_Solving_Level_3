@@ -668,7 +668,7 @@ string ReplaceWordInString(string Str, string StringToReplace, string ReplaceTo)
 	vector <string>vString = SplitString(Str, " ");
 	vector <string>::iterator iter= vString.begin();
 	string sWord = "";
-	for (iter = vString.begin(); iter < vString.end();iter ++)
+	for (iter = vString.begin(); iter < vString.end();iter++)
 	{
 		if ((*iter)== StringToReplace)
 		{
@@ -691,6 +691,23 @@ string ReplaceWordInStringUsingBuiltInFunction(string Str, string StringToReplac
 	return Str;	
 }
 
+//#42
+string ReplaceWordInStringUsingSplit(string Str , string StringToReplace, string sReplaceTo , bool MatchCase= true) {
+	vector<string> vString = SplitString(Str, " ");
+	for (string& s : vString) {
+		if (MatchCase)
+		{
+			if (s == StringToReplace)
+				s = sReplaceTo;
+		}
+		else
+		{
+			if (LowerAllString(s) == LowerAllString(StringToReplace))
+				s = sReplaceTo;
+		}
+	}
+	return JoinString(vString, " ");
+}
 
 int main()
 {
@@ -1070,6 +1087,13 @@ int main()
 	cout << ReplaceWordInString(S9, StringToReplace, ReplaceTo);
 	cout << "\n\nString After Replace Using Built In Function:\n";
 	cout << ReplaceWordInStringUsingBuiltInFunction(S9, StringToReplace, ReplaceTo);
+
+	//#43
+	cout << "\nOriginal String:\n" << S9;
+	cout << "\n\nReplace with match case: ";
+	cout << "\n" << ReplaceWordInStringUsingSplit(S9,StringToReplace, ReplaceTo);
+	cout << "\n\nReplace with dont match case: ";
+	cout << "\n" << ReplaceWordInStringUsingSplit(S9,StringToReplace, ReplaceTo, false);
 
 
 	system("pause>0");
