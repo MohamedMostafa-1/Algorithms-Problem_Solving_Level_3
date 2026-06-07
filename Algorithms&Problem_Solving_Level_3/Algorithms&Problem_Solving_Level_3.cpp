@@ -691,7 +691,7 @@ string ReplaceWordInStringUsingBuiltInFunction(string Str, string StringToReplac
 	return Str;	
 }
 
-//#42
+//#43
 string ReplaceWordInStringUsingSplit(string Str , string StringToReplace, string sReplaceTo , bool MatchCase= true) {
 	vector<string> vString = SplitString(Str, " ");
 	for (string& s : vString) {
@@ -707,6 +707,17 @@ string ReplaceWordInStringUsingSplit(string Str , string StringToReplace, string
 		}
 	}
 	return JoinString(vString, " ");
+}
+
+//#44
+string RemovePunctuationsFromString(string Str) {
+	string S1 = "";
+	for (short i = 0; i < Str.length(); i++)
+	{
+		if (!ispunct(Str[i]))
+			S1 += Str[i];
+	}
+	return S1;
 }
 
 int main()
@@ -1088,6 +1099,7 @@ int main()
 	cout << "\n\nString After Replace Using Built In Function:\n";
 	cout << ReplaceWordInStringUsingBuiltInFunction(S9, StringToReplace, ReplaceTo);
 
+	cout << "\n=============================================================================\n";
 	//#43
 	cout << "\nOriginal String:\n" << S9;
 	cout << "\n\nReplace with match case: ";
@@ -1095,6 +1107,11 @@ int main()
 	cout << "\n\nReplace with dont match case: ";
 	cout << "\n" << ReplaceWordInStringUsingSplit(S9,StringToReplace, ReplaceTo, false);
 
+	cout << "\n=============================================================================\n";
+	//#44
+	string S10 = "Welcome to Jordan, Jordan is a nice country; it's amazing.";
+	cout << "Original String:\n" << S10;
+	cout << "\n\nPauncuations Removed:\n" << RemovePunctuationsFromString(S10);
 
 	system("pause>0");
 }
