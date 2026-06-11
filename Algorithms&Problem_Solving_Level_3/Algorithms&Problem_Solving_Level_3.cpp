@@ -736,7 +736,7 @@ sClient ReadsClient() {
 	sClient Client;
 
 	cout << "Enter Account Number? ";
-	getline(cin, Client.AccountNumber);
+	getline(cin >>ws, Client.AccountNumber);
 	cout << "Enter PinCode? ";
 	getline(cin, Client.PinCode);
 	cout << "Enter Name? ";
@@ -781,6 +781,35 @@ void PrintClientRecord(sClient Client)
 	cout << "\nPhone : " << Client.Phone;
 	cout << "\nAccount Balance: " << Client.AccountBalance;
 }
+
+//#47
+const string FileName = "Clients";
+void AddDataToFile(string  FileName, string stDataLine) {
+	fstream file;
+	file.open(FileName, ios::out | ios::app);
+	if (file.is_open()) {
+		file << stDataLine << endl;
+		file.close();
+	}
+}
+void AddNewClient() {
+	sClient Client;
+	Client = ReadsClient();
+    AddDataToFile(FileName,ConvertRecordToLine(Client));
+}
+void AddClients() {
+	char AddMore = 'Y';
+	while (tolower(AddMore) == 'y') {
+		system("cls");
+		cout << "Adding New Client:\n\n";
+		AddNewClient();
+		cout << "\nClient Added Successfully, do you want to add more clients ? Y / N ? ";
+		cin >> AddMore;
+		
+
+	}
+}
+
 
 int main()
 {
@@ -1182,14 +1211,22 @@ int main()
 	//cout << ConvertRecordToLine(Client);
 
 	cout << "\n=============================================================================\n";
-	//#46
-	string stLine = "A150#//#1234#//#Mohammed Abu-Hadhoud#//#079999#//#5270.000000";
+	////#46
+	//string stLine = "A150#//#1234#//#Mohammed Abu-Hadhoud#//#079999#//#5270.000000";
 
-	cout << "\nLine Record is:\n";
-	cout << stLine;
-	sClient Client = ConvertLinetoRecord(stLine);
+	//cout << "\nLine Record is:\n";
+	//cout << stLine;
+	//sClient Client = ConvertLinetoRecord(stLine);
 
-	PrintClientRecord(Client);
+	//PrintClientRecord(Client);
+
+	cout << "\n=============================================================================\n";
+	//#47
+	AddClients();
+
+
+
+
 
 	system("pause>0");
 }
