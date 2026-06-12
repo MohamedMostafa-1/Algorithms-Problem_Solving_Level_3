@@ -811,7 +811,6 @@ void AddClients() {
 }
 
 //#48
-
 vector <sClient> LoadCleintsDataFromFile(string FileName)
 {
 	vector <sClient> vClients;
@@ -861,6 +860,27 @@ void PrintAllClientsData(vector <sClient> vClients)
 	cout <<
 		"\n_______________________________________________________";
 	cout << "_________________________________________\n" << endl;
+}
+
+//#49
+string ReadClientAccountNumber()
+{
+	string AccountNumber = "";
+	cout << "\nPlease enter AccountNumber? ";
+	cin >> AccountNumber;
+	return AccountNumber;
+}
+bool FindClientByAccountNumber(string AccountNumber , sClient& Client) {
+	vector <sClient> vClient = LoadCleintsDataFromFile(ClientsFileName);
+
+	for (sClient &C :vClient)
+	{
+		if (C.AccountNumber == AccountNumber) {
+			Client = C;
+			return true;
+		}
+	}
+	return false;
 }
 
 int main()
@@ -1281,8 +1301,15 @@ int main()
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	PrintAllClientsData(vClients);
 
+	//#49
+	sClient Client;
+	string AccountNumber = ReadClientAccountNumber();
+	if (FindClientByAccountNumber(AccountNumber, Client))
+		PrintClientRecord(Client);
+	else
+		cout << "\nClient with Account Number (" << AccountNumber <<") is Not Found!";
 
-
+	cout << endl;
 
 	system("pause>0");
 }
