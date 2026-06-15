@@ -730,6 +730,7 @@ struct sClient
 	string Name;
 	string Phone;
 	double AccountBalance;
+	bool MarkForDelete = false;
 };
 
 sClient ReadsClient() {
@@ -870,8 +871,7 @@ string ReadClientAccountNumber()
 	cin >> AccountNumber;
 	return AccountNumber;
 }
-bool FindClientByAccountNumber(string AccountNumber , sClient& Client) {
-	vector <sClient> vClient = LoadCleintsDataFromFile(ClientsFileName);
+bool FindClientByAccountNumber(string AccountNumber , vector <sClient> vClient, sClient& Client) {
 
 	for (sClient &C :vClient)
 	{
@@ -881,6 +881,56 @@ bool FindClientByAccountNumber(string AccountNumber , sClient& Client) {
 		}
 	}
 	return false;
+}
+
+
+//#50
+bool MakeClientForDeleteByAccountNumber(string AccountNumber, vector<sClient>& vClients) {
+	for (sClient& C : vClients) {
+		if (C.AccountNumber == AccountNumber) {
+			C.MarkForDelete = true;
+			return true;
+		}
+	}
+	return false;
+}
+void SaveCleintsDataToFile(string FileName, vector<sClient>& vClients) {
+	fstream MyFile;
+	MyFile.open(FileName, ios::out); //overwrite
+
+	string DataLine;
+	if (MyFile.is_open()) {
+		for (sClient& C : vClients) {
+			if (C.MarkForDelete == false) {
+				DataLine = ConvertRecordToLine(C);
+				MyFile << DataLine << endl;
+			}
+		}
+		MyFile.close();
+	}
+}
+bool DeleteClientByAccountNumber(string AccountNumber, vector<sClient>& vClients) {
+	char Answer = 'n';
+	sClient Client;
+	if (FindClientByAccountNumber(AccountNumber , vClients , Client))
+	{
+		PrintClientRecord(Client);
+		cout << "\n\nAre you sure you want delete this client? y/n ? ";
+		cin >> Answer;
+		if (tolower(Answer) == 'y')
+		{
+			MakeClientForDeleteByAccountNumber(AccountNumber , vClients);
+			SaveCleintsDataToFile(ClientsFileName , vClients);
+			//Refresh Clients
+			vClients = LoadCleintsDataFromFile(ClientsFileName);
+			cout << "\n\nClient Deleted Successfully.";
+			return true;
+		}
+	}
+	else {
+		cout << "Not Found";
+		return false;
+	}
 }
 
 int main()
@@ -1302,15 +1352,21 @@ int main()
 	PrintAllClientsData(vClients);
 
 	//#49
-	sClient Client;
+	//sClient Client;
+	//string AccountNumber = ReadClientAccountNumber();
+	//if (FindClientByAccountNumber(AccountNumber, Client))
+	//	PrintClientRecord(Client);
+	//else
+	//	cout << "\nClient with Account Number (" << AccountNumber <<") is Not Found!";
+
+	//#50
+	vector<sClient> vClient = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
-	if (FindClientByAccountNumber(AccountNumber, Client))
-		PrintClientRecord(Client);
-	else
-		cout << "\nClient with Account Number (" << AccountNumber <<") is Not Found!";
+	DeleteClientByAccountNumber(AccountNumber, vClient);
+
+
 
 	cout << endl;
-
 	system("pause>0");
 }
 
